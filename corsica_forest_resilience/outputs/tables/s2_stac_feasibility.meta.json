@@ -1,0 +1,14 @@
+{
+  "status": "ok",
+  "provider": "Microsoft Planetary Computer",
+  "collection": "sentinel-2-l2a",
+  "bbox": [
+    8.5,
+    41.3,
+    9.6,
+    43.1
+  ],
+  "rasterio_available": false,
+  "next_step": "Run gee_export_s2_seasonal.js OR implement COG sampling with rasterio",
+  "written": "2026-09-24"
+}

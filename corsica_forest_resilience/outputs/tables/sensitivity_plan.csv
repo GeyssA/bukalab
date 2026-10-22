@@ -1,0 +1,7 @@
+test,status,note
+grid_500m,pending,relancer preprocessing grid_size_m=500
+grid_2000m,pending,relancer preprocessing grid_size_m=2000
+exclude_burned,pending,filtrer burned_ever==0 avant matching
+caliper_0.25,pending,matching.caliper_sd
+drop_years_2017_2018,pending,recompute trends
+S2_only_vs_S2S1,pending,S1 optionnel — justifié structure

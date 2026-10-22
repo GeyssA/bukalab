@@ -1,0 +1,153 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>BukaLab — sciences des données environnementales</title>
+  <meta name="description" content="Cartographie, géomatique et analyse — figures en pleine qualité." />
+  <meta property="og:title" content="BukaLab" />
+  <meta property="og:description" content="Cartographies climat et environnement — consultation HD." />
+  <meta property="og:image" content="assets/cartes/france_climat_2025_thumb.jpg" />
+  <link rel="icon" href="assets/bukalab_mark.svg" type="image/svg+xml" />
+  <link rel="stylesheet" href="css/style.css" />
+</head>
+<body>
+  <header class="site-header">
+    <div class="header-inner">
+      <nav class="site-nav" aria-label="Principal">
+        <button type="button" class="nav-btn is-active" data-nav="accueil">Accueil</button>
+        <button type="button" class="nav-btn" data-nav="cartographie">Cartographie</button>
+        <button type="button" class="nav-btn" data-nav="apropos">À propos</button>
+      </nav>
+      <a class="logo-link" href="#" data-goto="accueil" aria-label="BukaLab accueil">
+        <img class="logo-img" src="assets/bukalab_logo_simple.svg" alt="BukaLab" width="360" height="94" decoding="async" />
+      </a>
+    </div>
+  </header>
+
+  <main>
+    <section class="panel is-active" data-panel="accueil">
+      <div class="wrap hero">
+        <h1 class="hero-title">
+          <span class="hero-main">Pour l’instant quelques cartographies</span>
+          <span class="hero-domains">de faune, de climat, de territoire.</span>
+        </h1>
+        <div class="hero-next">
+          <p>Bientôt, peut-être</p>
+          <ul>
+            <li>des articles scientifiques, quelques applis ou outils web</li>
+            <li>de la photographie, et pourquoi un peu de musique ? </li>
+          </ul>
+        </div>
+        <button type="button" class="btn-primary" data-goto="cartographie">Voir la cartographie</button>
+
+        <button type="button" class="hero-map-teaser" data-open-first="image">
+          <span class="hero-map-frame">
+            <img
+              src="assets/cartes/france_climat_2025.png"
+              alt="Température et précipitations annuelles — France, 2025"
+              width="4962"
+              height="3507"
+              loading="eager"
+              decoding="async"
+            />
+            <span class="hero-map-badge">Ouvrir en grand</span>
+          </span>
+          <span class="hero-map-caption">France, 2025 — température × précipitations</span>
+        </button>
+
+      </div>
+    </section>
+
+    <section class="panel" data-panel="cartographie" id="cartographie">
+      <div class="wrap">
+        <header class="carto-intro">
+          <p class="carto-eyebrow">Cartographie</p>
+          <h1>Figures de publication</h1>
+          <p class="carto-lead">
+            Cliquez une carte pour l’ouvrir en plein écran : zoom, bascule image / PDF,
+            navigation d’une carte à l’autre et téléchargement.
+          </p>
+          <div class="carto-toolbar">
+            <label class="search-field">
+              <span class="sr-only">Rechercher une carte</span>
+              <input type="search" id="carto-search" placeholder="Rechercher (titre, thème, année)…" autocomplete="off" />
+            </label>
+            <div class="chip-row" id="carto-tags" role="group" aria-label="Filtrer par thème"></div>
+            <p class="carto-count" id="carto-count"></p>
+          </div>
+        </header>
+
+        <div class="carto-grid" id="carto-grid"></div>
+        <p class="carto-empty" id="carto-empty" hidden>Aucune carte ne correspond à cette recherche.</p>
+      </div>
+    </section>
+
+    <section class="panel" data-panel="apropos">
+      <div class="wrap about-grid">
+        <div>
+          <h2>BukaLab</h2>
+          <p>Conception, traitement et cartographie : <strong>Arnaud Geyssels</strong>.</p>
+        </div>
+        <div>
+          <h2>Contact</h2>
+          <p><a href="https://www.linkedin.com/in/arnaud-geyssels-159329243/" rel="noopener noreferrer" target="_blank">LinkedIn</a></p>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer class="site-footer">
+    <p><strong>BukaLab</strong> · Sciences · Biostatistiques · Biologie · Géomatique · IA · Développement · Télédétection · 2026</p>
+  </footer>
+
+  <div class="viewer" id="viewer" hidden role="dialog" aria-modal="true" aria-labelledby="viewer-title">
+    <div class="viewer-backdrop" data-viewer-close></div>
+    <div class="viewer-shell">
+      <header class="viewer-bar">
+        <div class="viewer-meta">
+          <p class="viewer-eyebrow" id="viewer-eyebrow"></p>
+          <h2 id="viewer-title"></h2>
+          <p class="viewer-sub" id="viewer-subtitle"></p>
+        </div>
+        <div class="viewer-actions">
+          <div class="format-switch" role="tablist" aria-label="Format d’affichage">
+            <button type="button" class="format-btn is-active" data-format="image" role="tab" aria-selected="true">Image</button>
+            <button type="button" class="format-btn" data-format="pdf" role="tab" aria-selected="false">PDF</button>
+          </div>
+          <div class="zoom-tools" id="zoom-tools">
+            <button type="button" class="tool-btn tool-btn-icon" id="zoom-out" title="Zoom arrière (−)" aria-label="Zoom arrière">−</button>
+            <button type="button" class="tool-btn" id="zoom-fit" title="Ajuster à l’écran (0)">Ajuster</button>
+            <button type="button" class="tool-btn tool-btn-icon" id="zoom-in" title="Zoom avant (+)" aria-label="Zoom avant">+</button>
+            <span class="zoom-level" id="zoom-level">100 %</span>
+          </div>
+          <a class="tool-btn tool-btn-download" id="viewer-download" href="#" download>Télécharger</a>
+          <button type="button" class="tool-btn tool-btn-close" data-viewer-close title="Fermer (Échap)" aria-label="Fermer">✕</button>
+        </div>
+      </header>
+
+      <div class="viewer-stage" id="viewer-stage">
+        <button type="button" class="viewer-arrow viewer-arrow--prev" id="viewer-prev" aria-label="Carte précédente">‹</button>
+        <div class="viewer-canvas" id="viewer-canvas">
+          <img class="viewer-image" id="viewer-image" alt="" draggable="false" />
+        </div>
+        <iframe class="viewer-pdf" id="viewer-pdf" title="Document PDF" hidden></iframe>
+        <div class="viewer-spinner" id="viewer-spinner" hidden><span></span></div>
+        <button type="button" class="viewer-arrow viewer-arrow--next" id="viewer-next" aria-label="Carte suivante">›</button>
+      </div>
+
+      <footer class="viewer-foot">
+        <div class="viewer-strip" id="viewer-strip" role="tablist" aria-label="Cartes disponibles"></div>
+        <p class="viewer-hint">
+          Molette pour zoomer · glisser pour déplacer · double-clic pour alterner ajusté / 100 %
+          · <kbd>←</kbd> <kbd>→</kbd> changer de carte · <kbd>Échap</kbd> fermer
+        </p>
+      </footer>
+    </div>
+  </div>
+
+  <script src="js/catalog.js"></script>
+  <script src="js/main.js"></script>
+  <script src="js/carto.js"></script>
+</body>
+</html>

@@ -1,0 +1,24 @@
+{
+  "collection": "sentinel-2-l2a",
+  "provider": "Microsoft Planetary Computer",
+  "season": "summer JJA",
+  "resolution_m": 100,
+  "scl_clear": [
+    4,
+    5,
+    7
+  ],
+  "years": [
+    2017,
+    2018,
+    2019,
+    2020,
+    2021,
+    2022,
+    2023,
+    2024,
+    2025
+  ],
+  "n_cells": 2996,
+  "written": "2026-09-24"
+}

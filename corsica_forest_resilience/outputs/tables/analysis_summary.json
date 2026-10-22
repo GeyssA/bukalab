@@ -1,0 +1,98 @@
+{
+  "n_ts_rows": 26925,
+  "n_cells_with_metrics": 2993,
+  "n_pairs_tests": 1495,
+  "results_table": "C:\\Users\\arnau\\Documents\\DEV CODE\\CARTOGRAPHIES & ANALYSES\\CARTES\\corsica_forest_resilience\\outputs\\tables\\matched_outcome_tests.csv",
+  "key_rows": [
+    {
+      "variable": "NDMI",
+      "outcome": "trend_slope",
+      "n_pairs": 1495,
+      "mean_diff_pnr_minus_ctrl": 0.00034770206627977857,
+      "median_diff": 0.0010307135237554652,
+      "sign_test_p": 0.9391304347826087,
+      "ci95_low": -0.0003454422505197372,
+      "ci95_high": 0.0011247452906737636
+    },
+    {
+      "variable": "NDMI",
+      "outcome": "anomaly_mean",
+      "n_pairs": 1495,
+      "mean_diff_pnr_minus_ctrl": -0.0010711818725028391,
+      "median_diff": 0.0010078303727284995,
+      "sign_test_p": 0.9792642140468227,
+      "ci95_low": -0.00343684876286411,
+      "ci95_high": 0.001277383442298552
+    },
+    {
+      "variable": "NDMI",
+      "outcome": "cv",
+      "n_pairs": 1495,
+      "mean_diff_pnr_minus_ctrl": -5.450721606846377,
+      "median_diff": -0.045701298405875224,
+      "sign_test_p": 0.7906354515050167,
+      "ci95_low": -15.69684680166865,
+      "ci95_high": -0.19538289876998427
+    },
+    {
+      "variable": "NDMI",
+      "outcome": "recovery_years",
+      "n_pairs": 339,
+      "mean_diff_pnr_minus_ctrl": 0.04129793510324484,
+      "median_diff": 0.0,
+      "sign_test_p": 0.35988200589970504,
+      "ci95_low": -0.06489675516224189,
+      "ci95_high": 0.14749262536873156
+    },
+    {
+      "variable": "NDMI",
+      "outcome": "mean_level",
+      "n_pairs": 1495,
+      "mean_diff_pnr_minus_ctrl": 0.011550218324842376,
+      "median_diff": 0.016402780207503576,
+      "sign_test_p": 0.9391304347826087,
+      "ci95_low": 0.001694724608328868,
+      "ci95_high": 0.021781921621145638
+    },
+    {
+      "variable": "NDVI",
+      "outcome": "trend_slope",
+      "n_pairs": 1495,
+      "mean_diff_pnr_minus_ctrl": -0.0001655895018028782,
+      "median_diff": 0.0004806238114067468,
+      "sign_test_p": 0.9752508361204013,
+      "ci95_low": -0.0010456319672788642,
+      "ci95_high": 0.0006835738139161245
+    },
+    {
+      "variable": "NDVI",
+      "outcome": "anomaly_mean",
+      "n_pairs": 1495,
+      "mean_diff_pnr_minus_ctrl": -0.0011011050353393378,
+      "median_diff": 0.000756176525212815,
+      "sign_test_p": 0.9806020066889632,
+      "ci95_low": -0.0035341904754637196,
+      "ci95_high": 0.00128625909351303
+    },
+    {
+      "variable": "NDVI",
+      "outcome": "cv",
+      "n_pairs": 1495,
+      "mean_diff_pnr_minus_ctrl": -0.03482341995827561,
+      "median_diff": -0.004991285862281147,
+      "sign_test_p": 0.9270903010033444,
+      "ci95_low": -0.0987477954141561,
+      "ci95_high": -0.0021139909746707088
+    },
+    {
+      "variable": "NDVI",
+      "outcome": "mean_level",
+      "n_pairs": 1495,
+      "mean_diff_pnr_minus_ctrl": 0.008245773178388151,
+      "median_diff": 0.009205195910777286,
+      "sign_test_p": 0.9525083612040134,
+      "ci95_low": -0.002203641854903743,
+      "ci95_high": 0.018678381097364347
+    }
+  ]
+}

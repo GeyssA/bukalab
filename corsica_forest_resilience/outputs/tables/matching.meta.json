@@ -1,0 +1,20 @@
+{
+  "method": "nearest_neighbor_euclidean_on_standardized_covars",
+  "caliper_rule": "0.5 * sqrt(p)",
+  "covars": [
+    "elevation_m",
+    "slope_deg",
+    "aspect_sin",
+    "aspect_cos",
+    "summer_temp_mean",
+    "annual_precip",
+    "dist_coast_km",
+    "ft_broadleaf",
+    "ft_conifer",
+    "ft_mixed",
+    "ft_other"
+  ],
+  "n_pairs": 1498,
+  "causal_claim": "NOT causal",
+  "written": "2026-09-24"
+}

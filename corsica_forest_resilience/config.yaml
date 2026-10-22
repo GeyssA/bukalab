@@ -1,0 +1,112 @@
+# Corsica Forest Resilience — configuration
+project:
+  name: corsica_forest_resilience
+  title: "Forest trajectories inside vs outside the Parc naturel régional de Corse"
+  crs_analysis: "EPSG:2154"   # Lambert-93
+  crs_wgs84: "EPSG:4326"
+  access_date: "2026-09-24"
+
+study_area:
+  region: Corse
+  departments: ["2A", "2B"]
+  pnr_name_patterns: ["Corse", "CORSE", "Parc naturel régional de Corse"]
+
+period:
+  start: "2017-01-01"
+  end: "2025-12-31"          # dernière année complète disponible côté EO
+  phenology_window:          # Méditerranée : croissance / stress estival
+    spring: [3, 5]           # mars–mai
+    summer: [6, 8]           # juin–août (stress hydrique)
+    autumn: [9, 10]
+
+analysis_unit:
+  # Compromis bruit / autocorrélation / représentativité peuplement
+  grid_size_m: 1000
+  min_forest_fraction: 0.6   # ≥60 % forêt BD Forêt dans la cellule
+  alt_grid_sizes_m: [500, 2000]  # robustesse
+
+sentinel2:
+  collection: "sentinel-2-l2a"
+  max_cloud: 40
+  bands: ["B04", "B08", "B11", "SCL"]
+  indices: ["NDVI", "NDMI", "EVI"]
+  composite: "seasonal_median"   # médiane saisonnière (robuste aux outliers)
+  provider: "planetary_computer" # Microsoft Planetary Computer STAC (gratuit)
+
+sentinel1:
+  enabled: true
+  collection: "sentinel-1-rtc"   # radiometric terrain corrected if available
+  variables: ["vv", "vh", "vh_vv_ratio"]
+  justification: >
+    Complément structure / biomasse relative et continuité sous nuages.
+    Non utilisé comme proxy direct de stress hydrique (ambiguïté sol/canopée).
+
+matching:
+  method: "nearest_neighbor_mahalanobis"
+  caliper_sd: 0.5
+  covariates:
+    - elevation_m
+    - slope_deg
+    - aspect_sin
+    - aspect_cos
+    - summer_temp_mean
+    - annual_precip
+    - forest_type_group
+    - dist_coast_km
+    - burned_ever_2017_2025
+  ratio: 1   # 1 contrôle hors-PNR par unité PNR
+
+statistics:
+  outcomes:
+    - ndvi_summer_trend
+    - ndmi_summer_trend
+    - ndvi_summer_anomaly_mean
+    - ndmi_summer_anomaly_mean
+    - ndvi_interannual_cv
+    - recovery_years_after_drop
+  alpha: 0.05
+  bootstrap_n: 1000
+  cluster_note: "erreurs spatiales possibles → IC bootstrap + sensibilité grille"
+
+paths:
+  raw: "data/raw"
+  processed: "data/processed"
+  external: "data/external"
+  figures: "outputs/figures"
+  maps: "outputs/maps"
+  tables: "outputs/tables"
+  logs: "logs"
+
+data_sources:
+  pnr:
+    name: "Parcs Naturels Régionaux de France (07/11/2024)"
+    producer: "Fédération des PNR / GéoPNR (base BD TOPO IGN); diffusion indicative data.gouv.fr; source officielle INPN"
+    url: "https://www.data.gouv.fr/datasets/parcs-naturels-regionaux-de-france-au-07-novembre-2024-59-pnr"
+    license: "Licence Ouverte"
+    format: "GeoJSON EPSG:2154"
+  bd_foret:
+    name: "BD Forêt® v2"
+    producer: "IGN"
+    url: "https://geoservices.ign.fr / data.geopf.fr BDFORET"
+    departments: ["D02A_2017-05-10", "D02B_2016-02-16"]
+    license: "Licence Ouverte Etalab 2.0"
+    resolution: "polygones ≥0.5 ha"
+  dem:
+    name: "Copernicus DEM GLO-30 (via Planetary Computer) ou Open-Meteo elevation"
+    producer: "ESA / Copernicus"
+    resolution: "30 m (si PC) / point (Open-Meteo)"
+  climate:
+    name: "ERA5-Land via Open-Meteo Archive API"
+    producer: "ECMWF / Open-Meteo"
+    url: "https://open-meteo.com/en/docs/historical-weather-api"
+    variables: ["temperature_2m_mean", "precipitation_sum"]
+  fire:
+    name: "EFFIS Burnt Areas (MODIS/VIIRS) — à demander / WFS si disponible"
+    producer: "EC JRC Copernicus EMS"
+    url: "https://forest-fire.emergency.copernicus.eu/"
+    note: "Périmètres historiques via data request; fallback: anomalies NDVI négatives fortes"
+  s2:
+    name: "Sentinel-2 L2A"
+    producer: "ESA / Copernicus"
+    access: "Microsoft Planetary Computer STAC"
+    url: "https://planetarycomputer.microsoft.com/dataset/sentinel-2-l2a"

@@ -1,0 +1,29 @@
+{
+  "n_classes": 4,
+  "reference": "Quartiles 2025 arrondis — figés pour toute la série temporelle",
+  "temp_breaks_c": [
+    11.2,
+    12.0,
+    13.1
+  ],
+  "precip_breaks_mm": [
+    780.0,
+    900.0,
+    1040.0
+  ],
+  "temp_labels": [
+    "≤ 11,2",
+    "11,2 – 12,0",
+    "12,0 – 13,1",
+    "> 13,1"
+  ],
+  "precip_labels": [
+    "≤ 780",
+    "780 – 900",
+    "900 – 1 040",
+    "> 1 040"
+  ],
+  "data": "ERA5-Land (ECMWF) via Open-Meteo Archive API",
+  "method": "IDW (power=2) + lissage gaussien ; classification sur champs lissés",
+  "rule": "Seuils identiques pour toutes les années (comparabilité temporelle)."
+}

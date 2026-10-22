@@ -1,0 +1,7 @@
+__pycache__/
+*.pyc
+.DS_Store
+
+# Fichiers au-dessus de la limite GitHub (100 Mo) ou données brutes IGN
+corsica_forest_resilience/data/raw/
+blender_export/*.tif

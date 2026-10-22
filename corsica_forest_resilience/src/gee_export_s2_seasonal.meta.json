@@ -1,0 +1,29 @@
+{
+  "purpose": "Export GEE Sentinel-2 L2A seasonal NDVI/NDMI for analysis cells",
+  "indices": {
+    "NDVI": "Indice de végétation normalisé (NIR-Red)/(NIR+Red). Proxy d'activité photosynthétique / verdure de canopée. Limite: saturé en canopées denses; sensible au sol en maquis ouvert.",
+    "NDMI": "Normalized Difference Moisture Index (NIR-SWIR)/(NIR+SWIR). Sensible au contenu en eau du feuillage / stress hydrique relatif. Limite: confusions possibles avec structure et ombres.",
+    "EVI": "Enhanced Vegetation Index — moins saturé que NDVI, correction atmosphérique partielle. Complément pour peuplements denses.",
+    "VH_VV": "Ratio Sentinel-1 VH/VV : information structurelle / volume de diffusion. Complément sous nuages; non interprété seul comme stress hydrique."
+  },
+  "period": {
+    "start": "2017-01-01",
+    "end": "2025-12-31",
+    "phenology_window": {
+      "spring": [
+        3,
+        5
+      ],
+      "summer": [
+        6,
+        8
+      ],
+      "autumn": [
+        9,
+        10
+      ]
+    }
+  },
+  "note": "Requires Google Earth Engine account; no fabricated results without export",
+  "written": "2026-09-24"
+}

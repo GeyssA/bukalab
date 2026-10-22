@@ -1,0 +1,20 @@
+{
+  "n_classes": 4,
+  "reference_year": 2025,
+  "method": "quantiles_rounded",
+  "temp_breaks": [
+    11.2,
+    12.0,
+    13.1
+  ],
+  "precip_breaks": [
+    780.0,
+    900.0,
+    1040.0
+  ],
+  "temp_min": 5.0,
+  "temp_max": 20.0,
+  "precip_min": 300.0,
+  "precip_max": 2500.0,
+  "note": "Seuils arrondis stables pour animation 2015-2025"
+}

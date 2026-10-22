@@ -1,0 +1,15 @@
+# data/raw — gros fichiers IGN / rasters (ne pas committer)
+# data/processed — produits dérivés volumineux
+*.tif
+*.tiff
+*.jp2
+*.7z
+*.zip
+*.gpkg
+!docs/**
+__pycache__/
+*.pyc
+.ipynb_checkpoints/
+logs/*.log
+.env
+secrets.yaml
