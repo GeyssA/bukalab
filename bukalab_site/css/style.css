@@ -1292,7 +1292,7 @@ body.theme-cours .site-footer {
 
 /* À propos + CV */
 .about-intro {
-  max-width: 40rem;
+  max-width: none;
 }
 
 .about-intro h1 {
