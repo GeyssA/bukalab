@@ -21,7 +21,7 @@ ASSETS = ROOT / "assets"
 CARTES = ASSETS / "cartes"
 IDENT = BASE / "bukalab_identity"
 
-LOGOS = ("bukalab_logo.svg", "bukalab_logo_dark.svg", "bukalab_mark.svg", "bukalab_logo_simple.svg")
+LOGOS = ("bukalab_logo.svg", "bukalab_logo_dark.svg", "bukalab_mark.svg", "bukalab_logo_simple.svg", "bukalab_logo_plain.svg")
 
 SOURCES = [
     {

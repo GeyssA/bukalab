@@ -1093,7 +1093,7 @@ body.theme-cours .site-footer {
   gap: 0.85rem;
 }
 
-.cours-board li {
+.cours-board > li {
   display: flex;
   gap: 0.85rem;
   align-items: flex-start;
@@ -1102,6 +1102,21 @@ body.theme-cours .site-footer {
   background: rgba(255, 252, 247, 0.88);
   border: 1px solid #e4d5c0;
   border-radius: 12px;
+}
+
+.cours-board ul {
+  margin: 0.35rem 0 0;
+  padding-left: 1.05rem;
+}
+
+.cours-board ul li {
+  margin: 0;
+  padding: 0;
+  font-size: 0.88rem;
+  line-height: 1.45;
+  color: #5c6570;
+  background: none;
+  border: none;
 }
 
 .cours-board h2 {
