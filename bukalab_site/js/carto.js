@@ -1,6 +1,10 @@
 /* Galerie de cartographies + visionneuse plein écran (zoom, pan, image/PDF). */
 
 const CATALOG = (window.BUKALAB_CARTO || []).map((c) => ({ tags: [], ...c }));
+const tr = (key) => (window.BukaLabI18n ? window.BukaLabI18n.t(key) : key);
+const inEnglish = () => window.BukaLabI18n?.lang === "en";
+const field = (item, name) => (inEnglish() && item[`${name}En`]) || item[name] || "";
+const tagsOf = (item) => (inEnglish() && item.tagsEn) || item.tags || [];
 
 const grid = document.getElementById("carto-grid");
 const emptyMsg = document.getElementById("carto-empty");
@@ -42,9 +46,9 @@ let lastFocus = null;
 /* ---------------------------------------------------------------- Galerie */
 
 function matches(item) {
-  if (activeTag && !item.tags.includes(activeTag)) return false;
+  if (activeTag && !tagsOf(item).includes(activeTag)) return false;
   if (!query) return true;
-  const hay = [item.title, item.subtitle, item.year, ...item.tags].join(" ").toLowerCase();
+  const hay = [item.title, item.titleEn, item.subtitle, item.subtitleEn, item.year, ...(item.tags || []), ...(item.tagsEn || [])].join(" ").toLowerCase();
   return query
     .toLowerCase()
     .split(/\s+/)
@@ -63,22 +67,22 @@ function renderGrid() {
     card.innerHTML = `
       <div class="carto-card-figure">
         <img src="${item.thumb || item.image}" alt="" loading="lazy" decoding="async" />
-        <div class="carto-card-overlay"><span>Ouvrir en grand</span></div>
+        <div class="carto-card-overlay"><span>${tr("carto.open")}</span></div>
       </div>
       <div class="carto-card-body">
-        <h2><button type="button" class="carto-card-link">${item.title}</button></h2>
-        <p>${item.subtitle || ""}</p>
-        <div class="carto-card-tags">${item.tags.map((t) => `<span>${t}</span>`).join("")}</div>
+        <h2><button type="button" class="carto-card-link">${field(item, "title")}</button></h2>
+        <p>${field(item, "subtitle")}</p>
+        <div class="carto-card-tags">${tagsOf(item).map((tag) => `<span>${tag}</span>`).join("")}</div>
       </div>`;
     card.querySelector(".carto-card-link").addEventListener("click", () => openViewer(item.id));
     grid.appendChild(card);
   });
 
   emptyMsg.hidden = visible.length > 0;
-  countEl.textContent =
-    CATALOG.length === visible.length
-      ? `${CATALOG.length} carte${CATALOG.length > 1 ? "s" : ""}`
-      : `${visible.length} / ${CATALOG.length} cartes`;
+  const countKey = CATALOG.length === visible.length
+    ? (CATALOG.length > 1 ? "carto.count.many" : "carto.count.one")
+    : "carto.count.filtered";
+  countEl.textContent = tr(countKey).replace("{n}", CATALOG.length).replace("{v}", visible.length);
 }
 
 function renderFilters() {
@@ -87,7 +91,7 @@ function renderFilters() {
     toolbar.hidden = true;
     return;
   }
-  const tags = [...new Set(CATALOG.flatMap((c) => c.tags))].sort((a, b) => a.localeCompare(b, "fr"));
+  const tags = [...new Set(CATALOG.flatMap((c) => tagsOf(c)))].sort((a, b) => a.localeCompare(b, inEnglish() ? "en" : "fr"));
   tagRow.innerHTML = "";
   if (!tags.length) {
     tagRow.hidden = true;
@@ -252,7 +256,7 @@ function setFormat(next, { push = true } = {}) {
 
   downloadEl.href = isImage ? item.image : item.pdf;
   downloadEl.setAttribute("download", (isImage ? item.image : item.pdf).split("/").pop());
-  downloadEl.textContent = isImage ? "Télécharger le PNG" : "Télécharger le PDF";
+  downloadEl.textContent = isImage ? tr("carto.download.png") : tr("carto.download.pdf");
 
   if (isImage) requestAnimationFrame(fitToScreen);
   if (push) syncUrl();
@@ -266,8 +270,8 @@ function renderStrip() {
     const b = document.createElement("button");
     b.type = "button";
     b.className = "strip-thumb" + (i === openIndex ? " is-active" : "");
-    b.title = item.title;
-    b.setAttribute("aria-label", item.title);
+    b.title = field(item, "title");
+    b.setAttribute("aria-label", field(item, "title"));
     b.innerHTML = `<img src="${item.thumb || item.image}" alt="" loading="lazy" />`;
     b.addEventListener("click", () => showIndex(i));
     strip.appendChild(b);
@@ -287,10 +291,10 @@ function showIndex(i, { push = true } = {}) {
   openIndex = i;
   const item = CATALOG[i];
 
-  eyebrowEl.textContent = [item.year, ...item.tags].filter(Boolean).join(" · ");
-  titleEl.textContent = item.title;
-  subEl.textContent = item.subtitle || "";
-  imgEl.alt = item.title;
+  eyebrowEl.textContent = [item.year, ...tagsOf(item)].filter(Boolean).join(" · ");
+  titleEl.textContent = field(item, "title");
+  subEl.textContent = field(item, "subtitle");
+  imgEl.alt = field(item, "title");
 
   imgEl.classList.remove("is-ready");
   spinner.hidden = false;
@@ -434,6 +438,13 @@ document.querySelectorAll("[data-open-first]").forEach((el) => {
 
 renderFilters();
 renderGrid();
+
+window.addEventListener("bukalab-lang", () => {
+  activeTag = null;
+  renderFilters();
+  renderGrid();
+  if (openIndex >= 0 && viewer && !viewer.hidden) showIndex(openIndex, { push: false });
+});
 
 const params = new URLSearchParams(location.search);
 const deepLink = params.get("carte");

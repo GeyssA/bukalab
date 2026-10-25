@@ -47,10 +47,14 @@ if (plot && curve && muInput && sigmaInput) {
     meanLine.setAttribute("x2", mx);
     meanLine.setAttribute("y1", Y1);
     meanLine.setAttribute("y2", sy(pdf(mu, mu, sigma)));
-    muVal.textContent = mu.toFixed(1).replace(".", ",");
-    sigmaVal.textContent = sigma.toFixed(2).replace(/0$/, "").replace(".", ",");
-    readout.textContent = `N(${mu.toFixed(1).replace(".", ",")} ; ${sigma.toFixed(2).replace(".", ",")}²)`;
+    const decimal = window.BukaLabI18n?.lang === "en" ? "." : ",";
+    const num = (value, digits) => value.toFixed(digits).replace(".", decimal);
+    muVal.textContent = num(mu, 1);
+    sigmaVal.textContent = num(sigma, 2).replace(/0$/, "");
+    readout.textContent = `N(${num(mu, 1)} ; ${num(sigma, 2)}²)`;
   }
+
+  window.addEventListener("bukalab-lang", draw);
 
   muInput.addEventListener("input", draw);
   sigmaInput.addEventListener("input", draw);

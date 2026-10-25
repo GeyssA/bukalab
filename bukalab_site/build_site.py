@@ -29,18 +29,24 @@ SOURCES = [
         "slug": "france_climat_2025",
         "src": BASE / "output_france" / "publication" / "france_climat_poster_2025",
         "title": "Température et précipitations annuelles — France, 2025",
+        "title_en": "Annual temperature and precipitation — France, 2025",
         "subtitle": "Synthèse bivariée ERA5-Land · seuils fixes (quartiles 2025)",
+        "subtitle_en": "Bivariate ERA5-Land summary · fixed thresholds (2025 quartiles)",
         "year": 2025,
         "tags": ["climat", "France"],
+        "tags_en": ["climate", "France"],
     },
     {
         "id": "corse-herpeto-2025",
         "slug": "corse_herpeto_2025",
         "src": BASE / "output_corse" / "publication" / "corse_herpeto_poster_bukalab",
         "title": "Amphibiens et reptiles de Corse",
+        "title_en": "Amphibians and reptiles of Corsica",
         "subtitle": "État des connaissances 2000-2025 · richesse spécifique, statuts et phénologie des 18 espèces",
+        "subtitle_en": "State of knowledge 2000–2025 · species richness, status and phenology of 18 species",
         "year": 2025,
         "tags": ["faune", "Corse"],
+        "tags_en": ["wildlife", "Corsica"],
     },
 ]
 
@@ -79,7 +85,9 @@ def build_entry(spec: dict) -> dict | None:
     return {
         "id": spec["id"],
         "title": spec["title"],
+        "titleEn": spec.get("title_en"),
         "subtitle": spec["subtitle"],
+        "subtitleEn": spec.get("subtitle_en"),
         "image": f"assets/cartes/{slug}.png",
         "pdf": f"assets/cartes/{slug}.pdf" if pdf.is_file() else None,
         "thumb": f"assets/cartes/{slug}_thumb.jpg",
@@ -87,6 +95,7 @@ def build_entry(spec: dict) -> dict | None:
         "height": height,
         "year": spec["year"],
         "tags": spec["tags"],
+        "tagsEn": spec.get("tags_en"),
     }
 
 

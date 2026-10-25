@@ -15,12 +15,16 @@
   <header class="site-header">
     <div class="header-inner">
       <nav class="site-nav" aria-label="Principal">
-        <button type="button" class="nav-btn is-active" data-nav="accueil">Accueil</button>
-        <button type="button" class="nav-btn" data-nav="cartographie">Cartographie</button>
-        <button type="button" class="nav-btn" data-nav="cours">Cours</button>
-        <button type="button" class="nav-btn" data-nav="apropos">À propos</button>
+        <button type="button" class="nav-btn is-active" data-nav="accueil" data-i18n="nav.home">Accueil</button>
+        <button type="button" class="nav-btn" data-nav="cartographie" data-i18n="nav.maps">Cartographie</button>
+        <button type="button" class="nav-btn" data-nav="cours" data-i18n="nav.courses">Cours</button>
+        <button type="button" class="nav-btn" data-nav="apropos" data-i18n="nav.about">À propos</button>
       </nav>
       <div class="header-tools">
+        <div class="lang-switch" role="group" data-i18n-aria="lang.label" aria-label="Langue">
+          <button type="button" data-lang="fr" aria-pressed="true">FR</button>
+          <button type="button" data-lang="en" aria-pressed="false">EN</button>
+        </div>
         <nav class="contact-links" aria-label="Contact">
           <a href="mailto:arnaud.geyssels@gmail.com" aria-label="Écrire à arnaud.geyssels@gmail.com" title="arnaud.geyssels@gmail.com">
             <svg viewBox="0 0 24 24" aria-hidden="true"><rect x="3" y="5" width="18" height="14" rx="2"/><path d="M4 7l8 6 8-6"/></svg>
@@ -46,32 +50,33 @@
     <section class="panel is-active" data-panel="accueil">
       <div class="wrap hero">
         <h1 class="hero-title">
-          <span class="hero-main">Pour l’instant quelques cartographies</span>
-          <span class="hero-domains">de faune, de climat, de territoire.</span>
+          <span class="hero-main" data-i18n="home.title">Pour l’instant quelques cartographies</span>
+          <span class="hero-domains" data-i18n="home.domains">de faune, de climat, de territoire.</span>
         </h1>
         <div class="hero-next">
-          <p>Bientôt, peut-être</p>
+          <p data-i18n="home.soon">Bientôt, peut-être</p>
           <ul>
-            <li>des articles scientifiques, quelques applis ou outils web</li>
-            <li>de la photographie, et pourquoi un peu de musique ? </li>
+            <li data-i18n="home.soon1">des articles scientifiques, quelques applis ou outils web</li>
+            <li data-i18n="home.soon2">de la photographie, et pourquoi un peu de musique ?</li>
           </ul>
         </div>
-        <button type="button" class="btn-primary" data-goto="cartographie">Voir la cartographie</button>
-        <p class="hero-aside">Je donne aussi <button type="button" data-goto="cours">des cours de biostatistique</button> à l’université.</p>
+        <button type="button" class="btn-primary" data-goto="cartographie" data-i18n="home.cta">Voir la cartographie</button>
+        <p class="hero-aside"><span data-i18n="home.aside.before">Je donne aussi</span> <button type="button" data-goto="cours" data-i18n="home.aside.link">des cours de biostatistique</button> <span data-i18n="home.aside.after">à l’université.</span></p>
 
         <button type="button" class="hero-map-teaser" data-open-first="image">
           <span class="hero-map-frame">
             <img
               src="assets/cartes/france_climat_2025.png"
               alt="Température et précipitations annuelles — France, 2025"
+              data-i18n-alt="home.alt"
               width="4962"
               height="3507"
               loading="eager"
               decoding="async"
             />
-            <span class="hero-map-badge">Ouvrir en grand</span>
+            <span class="hero-map-badge" data-i18n="home.badge">Ouvrir en grand</span>
           </span>
-          <span class="hero-map-caption">France, 2025 — température × précipitations</span>
+          <span class="hero-map-caption" data-i18n="home.caption">France, 2025 — température × précipitations</span>
         </button>
 
       </div>
@@ -80,24 +85,24 @@
     <section class="panel" data-panel="cartographie" id="cartographie">
       <div class="wrap">
         <header class="carto-intro">
-          <p class="carto-eyebrow">Cartographie</p>
-          <h1>Figures de publication</h1>
-          <p class="carto-lead">
+          <p class="carto-eyebrow" data-i18n="carto.kicker">Cartographie</p>
+          <h1 data-i18n="carto.title">Figures de publication</h1>
+          <p class="carto-lead" data-i18n="carto.lead">
             Cliquez une carte pour l’ouvrir en plein écran : zoom, bascule image / PDF,
             navigation d’une carte à l’autre et téléchargement.
           </p>
           <div class="carto-toolbar">
             <label class="search-field">
-              <span class="sr-only">Rechercher une carte</span>
-              <input type="search" id="carto-search" placeholder="Rechercher (titre, thème, année)…" autocomplete="off" />
+              <span class="sr-only" data-i18n="carto.search">Rechercher une carte</span>
+              <input type="search" id="carto-search" data-i18n-placeholder="carto.search.ph" placeholder="Rechercher (titre, thème, année)…" autocomplete="off" />
             </label>
-            <div class="chip-row" id="carto-tags" role="group" aria-label="Filtrer par thème"></div>
+            <div class="chip-row" id="carto-tags" role="group" data-i18n-aria="carto.filter" aria-label="Filtrer par thème"></div>
             <p class="carto-count" id="carto-count"></p>
           </div>
         </header>
 
         <div class="carto-grid" id="carto-grid"></div>
-        <p class="carto-empty" id="carto-empty" hidden>Aucune carte ne correspond à cette recherche.</p>
+        <p class="carto-empty" id="carto-empty" data-i18n="carto.empty" hidden>Aucune carte ne correspond à cette recherche.</p>
       </div>
     </section>
 
@@ -106,9 +111,9 @@
         <div class="wrap cours">
           <div class="cours-layout">
             <div class="cours-copy">
-              <p class="cours-kicker">Cours</p>
-              <h1>Des cours de biostatistique.</h1>
-              <p class="cours-lead">
+              <p class="cours-kicker" data-i18n="cours.kicker">Cours</p>
+              <h1 data-i18n="cours.title">Des cours de biostatistique.</h1>
+              <p class="cours-lead" data-i18n="cours.lead">
                 Cours pour des étudiants à l’université, au rythme du chapitre qui coince.
                 Un exercice, un TP, ou la relecture d’un mémoire.
               </p>
@@ -119,13 +124,13 @@
                     <svg viewBox="0 0 64 40"><rect x="6" y="22" width="8" height="12"/><rect x="20" y="12" width="8" height="22"/><rect x="34" y="17" width="8" height="17"/><rect x="48" y="6" width="8" height="28"/></svg>
                   </span>
                   <div>
-                    <h2>Décrire</h2>
+                    <h2 data-i18n="cours.h.describe">Décrire</h2>
                     <ul>
-                      <li>Population, échantillon, individu</li>
-                      <li>Types de variables</li>
-                      <li>Tableaux de fréquences et graphiques</li>
-                      <li>Valeurs centrales</li>
-                      <li>Dispersion</li>
+                      <li data-i18n="cours.d1">Population, échantillon, individu</li>
+                      <li data-i18n="cours.d2">Types de variables</li>
+                      <li data-i18n="cours.d3">Tableaux de fréquences et graphiques</li>
+                      <li data-i18n="cours.d4">Valeurs centrales</li>
+                      <li data-i18n="cours.d5">Dispersion</li>
                     </ul>
                   </div>
                 </li>
@@ -134,12 +139,12 @@
                     <svg viewBox="0 0 64 40"><circle cx="24" cy="20" r="12"/><circle cx="40" cy="20" r="12"/></svg>
                   </span>
                   <div>
-                    <h2>Hasard</h2>
+                    <h2 data-i18n="cours.h.chance">Hasard</h2>
                     <ul>
-                      <li>Événements et vocabulaire</li>
-                      <li>Probabilité conditionnelle</li>
-                      <li>Indépendance</li>
-                      <li>Formule de Bayes</li>
+                      <li data-i18n="cours.c1">Événements et vocabulaire</li>
+                      <li data-i18n="cours.c2">Probabilité conditionnelle</li>
+                      <li data-i18n="cours.c3">Indépendance</li>
+                      <li data-i18n="cours.c4">Formule de Bayes</li>
                     </ul>
                   </div>
                 </li>
@@ -148,13 +153,13 @@
                     <svg viewBox="0 0 64 40"><path d="M6 32 C 18 32, 22 8, 32 8 C 42 8, 46 32, 58 32"/></svg>
                   </span>
                   <div>
-                    <h2>Lois</h2>
+                    <h2 data-i18n="cours.h.laws">Lois</h2>
                     <ul>
-                      <li>Variable aléatoire</li>
-                      <li>Loi binomiale</li>
-                      <li>Loi de Poisson</li>
-                      <li>Loi normale et table Z</li>
-                      <li>Quelle loi utiliser</li>
+                      <li data-i18n="cours.l1">Variable aléatoire</li>
+                      <li data-i18n="cours.l2">Loi binomiale</li>
+                      <li data-i18n="cours.l3">Loi de Poisson</li>
+                      <li data-i18n="cours.l4">Loi normale et table Z</li>
+                      <li data-i18n="cours.l5">Quelle loi utiliser</li>
                     </ul>
                   </div>
                 </li>
@@ -163,28 +168,27 @@
                     <svg viewBox="0 0 64 40"><path d="M10 20 H54"/><path d="M10 14 V26"/><path d="M54 14 V26"/><circle cx="32" cy="20" r="3"/></svg>
                   </span>
                   <div>
-                    <h2>Conclure</h2>
+                    <h2 data-i18n="cours.h.infer">Conclure</h2>
                     <ul>
-                      <li>Estimateurs</li>
-                      <li>Intervalle de confiance d’une moyenne</li>
-                      <li>Intervalle de confiance d’une proportion</li>
-                      <li>Tests statistiques</li>
+                      <li data-i18n="cours.i1">Estimateurs</li>
+                      <li data-i18n="cours.i2">Intervalle de confiance d’une moyenne</li>
+                      <li data-i18n="cours.i3">Intervalle de confiance d’une proportion</li>
+                      <li data-i18n="cours.i4">Tests statistiques</li>
                     </ul>
                   </div>
                 </li>
               </ol>
 
               <p class="cours-note">
-                Supports et accompagnement sur mesure.
-                Pour un cours :
+                <span data-i18n="cours.note.before">Supports et accompagnement sur mesure. Pour un cours :</span>
                 <a href="mailto:arnaud.geyssels@gmail.com">arnaud.geyssels@gmail.com</a>
-                ou
+                <span data-i18n="cours.note.or">ou</span>
                 <a href="https://www.superprof.be/biostatisticien-biologiste-conservation-chercheur-herpetologie-cours-relecture-travaux.html" rel="noopener noreferrer" target="_blank">Superprof</a>.
               </p>
             </div>
 
             <figure class="cours-lab">
-              <figcaption>Loi normale — faites bouger la moyenne et l’écart-type</figcaption>
+              <figcaption data-i18n="cours.lab">Loi normale — faites bouger la moyenne et l’écart-type</figcaption>
               <svg id="gauss-plot" viewBox="0 0 360 200" role="img" aria-labelledby="gauss-caption">
                 <title id="gauss-caption">Courbe de la loi normale</title>
                 <line class="gauss-axis" x1="28" y1="168" x2="340" y2="168" />
@@ -195,11 +199,11 @@
               </svg>
               <div class="cours-sliders">
                 <label>
-                  <span>Moyenne μ <strong id="mu-val">0</strong></span>
+                  <span><span data-i18n="cours.mu">Moyenne μ</span> <strong id="mu-val">0</strong></span>
                   <input id="mu" type="range" min="-2" max="2" step="0.1" value="0" />
                 </label>
                 <label>
-                  <span>Écart-type σ <strong id="sigma-val">1</strong></span>
+                  <span><span data-i18n="cours.sigma">Écart-type σ</span> <strong id="sigma-val">1</strong></span>
                   <input id="sigma" type="range" min="0.45" max="1.8" step="0.05" value="1" />
                 </label>
               </div>
@@ -211,16 +215,15 @@
     </section>
 
     <section class="panel" data-panel="apropos">
-      <div class="wrap about-grid">
-        <div>
-          <h2>Arnaud Geyssels</h2>
-          <p>
-            Biostatistique, biologie de la conservation, herpétologie.
-            BukaLab, c’est les cartes de ce site, et les cours pour les étudiants qui veulent reprendre un chapitre au calme.
+      <div class="wrap about">
+        <header class="about-intro">
+          <p class="cours-kicker" data-i18n="about.kicker">À propos</p>
+          <h1 data-i18n="about.name">Arnaud Geyssels</h1>
+          <p class="about-role" data-i18n="about.role">Biologiste de la conservation · biostatisticien</p>
+          <p data-i18n="about.body">
+            Herpétologie, à l’interface du terrain, de l’analyse de données et des outils numériques : génétique des populations, écophysiologie, suivis acoustiques, télémétrie, télédétection. Chargé de projet biodiversité au Conservatoire d’espaces naturels de Corse depuis 2023, et cours de biostatistique en parallèle. Auparavant assistant en statistiques à l’UCLouvain. Séjours de recherche au CNRS de Chizé, sur l’hydrorégulation des vipères, et à la station biologique de Doñana.
           </p>
-        </div>
-        <div>
-          <h2>Contact</h2>
+          <h2 data-i18n="about.contact">Contact</h2>
           <p>
             <a href="mailto:arnaud.geyssels@gmail.com">arnaud.geyssels@gmail.com</a>
             ·
@@ -240,7 +243,34 @@
               <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M4 10l8-5 8 5"/><path d="M7 11.5V17M12 11.5V17M17 11.5V17"/><path d="M5 17.5h14"/></svg>
             </a>
           </nav>
+        </header>
+
+        <div class="cv-block">
+          <div class="cv-toolbar">
+            <div>
+              <h2 data-i18n="about.cv">Curriculum vitæ</h2>
+              <p class="cv-hint" data-i18n="about.cv.hint">Les deux pages côte à côte. Un clic agrandit la page.</p>
+            </div>
+            <div class="cv-switch" role="tablist" aria-label="CV">
+              <button type="button" data-cv-lang="fr" role="tab" aria-selected="true">FR</button>
+              <button type="button" data-cv-lang="en" role="tab" aria-selected="false">EN</button>
+            </div>
+          </div>
+          <div class="cv-spread">
+            <button type="button" data-cv-zoom>
+              <img id="cv-page-1" src="assets/cv/cv_fr_1.png" alt="CV, page 1" width="1406" height="1988" />
+            </button>
+            <button type="button" data-cv-zoom>
+              <img id="cv-page-2" src="assets/cv/cv_fr_2.png" alt="CV, page 2" width="1406" height="1988" />
+            </button>
+          </div>
         </div>
+      </div>
+
+      <div class="cv-zoom" id="cv-zoom" hidden>
+        <button type="button" class="cv-zoom-backdrop" data-cv-zoom-close aria-label="Fermer"></button>
+        <button type="button" class="cv-zoom-close" data-cv-zoom-close data-i18n-aria="cv.close" aria-label="Fermer">✕</button>
+        <img id="cv-zoom-img" alt="" />
       </div>
     </section>
   </main>
@@ -265,7 +295,7 @@
       ·
       <a href="https://www.superprof.be/biostatisticien-biologiste-conservation-chercheur-herpetologie-cours-relecture-travaux.html" rel="noopener noreferrer" target="_blank">Superprof</a>
     </p>
-    <p><strong>BukaLab</strong> · Sciences · Biostatistiques · Biologie · Géomatique · IA · Développement · Télédétection · 2026</p>
+    <p><strong>BukaLab</strong> · <span data-i18n="footer.domains">Sciences · Biostatistiques · Biologie · Géomatique · IA · Développement · Télédétection</span> · 2026</p>
   </footer>
 
   <div class="viewer" id="viewer" hidden role="dialog" aria-modal="true" aria-labelledby="viewer-title">
@@ -278,44 +308,45 @@
           <p class="viewer-sub" id="viewer-subtitle"></p>
         </div>
         <div class="viewer-actions">
-          <div class="format-switch" role="tablist" aria-label="Format d’affichage">
+          <div class="format-switch" role="tablist" data-i18n-aria="viewer.format" aria-label="Format d’affichage">
             <button type="button" class="format-btn is-active" data-format="image" role="tab" aria-selected="true">Image</button>
             <button type="button" class="format-btn" data-format="pdf" role="tab" aria-selected="false">PDF</button>
           </div>
           <div class="zoom-tools" id="zoom-tools">
-            <button type="button" class="tool-btn tool-btn-icon" id="zoom-out" title="Zoom arrière (−)" aria-label="Zoom arrière">−</button>
-            <button type="button" class="tool-btn" id="zoom-fit" title="Ajuster à l’écran (0)">Ajuster</button>
-            <button type="button" class="tool-btn tool-btn-icon" id="zoom-in" title="Zoom avant (+)" aria-label="Zoom avant">+</button>
+            <button type="button" class="tool-btn tool-btn-icon" id="zoom-out" data-i18n-title="viewer.zoom.out" data-i18n-aria="viewer.zoom.out" title="Zoom arrière" aria-label="Zoom arrière">−</button>
+            <button type="button" class="tool-btn" id="zoom-fit" data-i18n="viewer.fit" data-i18n-title="viewer.fit" title="Ajuster">Ajuster</button>
+            <button type="button" class="tool-btn tool-btn-icon" id="zoom-in" data-i18n-title="viewer.zoom.in" data-i18n-aria="viewer.zoom.in" title="Zoom avant" aria-label="Zoom avant">+</button>
             <span class="zoom-level" id="zoom-level">100 %</span>
           </div>
-          <a class="tool-btn tool-btn-download" id="viewer-download" href="#" download>Télécharger</a>
-          <button type="button" class="tool-btn tool-btn-close" data-viewer-close title="Fermer (Échap)" aria-label="Fermer">✕</button>
+          <a class="tool-btn tool-btn-download" id="viewer-download" href="#" download data-i18n="viewer.download">Télécharger</a>
+          <button type="button" class="tool-btn tool-btn-close" data-viewer-close data-i18n-title="viewer.close" data-i18n-aria="viewer.close" title="Fermer" aria-label="Fermer">✕</button>
         </div>
       </header>
 
       <div class="viewer-stage" id="viewer-stage">
-        <button type="button" class="viewer-arrow viewer-arrow--prev" id="viewer-prev" aria-label="Carte précédente">‹</button>
+        <button type="button" class="viewer-arrow viewer-arrow--prev" id="viewer-prev" data-i18n-aria="viewer.prev" aria-label="Carte précédente">‹</button>
         <div class="viewer-canvas" id="viewer-canvas">
           <img class="viewer-image" id="viewer-image" alt="" draggable="false" />
         </div>
         <iframe class="viewer-pdf" id="viewer-pdf" title="Document PDF" hidden></iframe>
         <div class="viewer-spinner" id="viewer-spinner" hidden><span></span></div>
-        <button type="button" class="viewer-arrow viewer-arrow--next" id="viewer-next" aria-label="Carte suivante">›</button>
+        <button type="button" class="viewer-arrow viewer-arrow--next" id="viewer-next" data-i18n-aria="viewer.next" aria-label="Carte suivante">›</button>
       </div>
 
       <footer class="viewer-foot">
         <div class="viewer-strip" id="viewer-strip" role="tablist" aria-label="Cartes disponibles"></div>
-        <p class="viewer-hint">
-          Molette pour zoomer · glisser pour déplacer · double-clic pour alterner ajusté / 100 %
-          · <kbd>←</kbd> <kbd>→</kbd> changer de carte · <kbd>Échap</kbd> fermer
+        <p class="viewer-hint" data-i18n="viewer.hint">
+          Molette pour zoomer · glisser pour déplacer · double-clic pour alterner ajusté / 100 % · flèches pour changer de carte · Échap pour fermer
         </p>
       </footer>
     </div>
   </div>
 
+  <script src="js/i18n.js"></script>
   <script src="js/catalog.js"></script>
   <script src="js/main.js"></script>
   <script src="js/carto.js"></script>
   <script src="js/cours.js"></script>
+  <script src="js/about.js"></script>
 </body>
 </html>
