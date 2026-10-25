@@ -1,4 +1,4 @@
-const PANELS = ["accueil", "cartographie", "apropos"];
+const PANELS = ["accueil", "cartographie", "cours", "apropos"];
 
 const panels = document.querySelectorAll("[data-panel]");
 const navBtns = document.querySelectorAll("[data-nav]");
@@ -11,6 +11,7 @@ function showPanel(id, { scroll = true } = {}) {
   if (!PANELS.includes(id)) id = "accueil";
   panels.forEach((p) => p.classList.toggle("is-active", p.dataset.panel === id));
   navBtns.forEach((b) => b.classList.toggle("is-active", b.dataset.nav === id));
+  document.body.classList.toggle("theme-cours", id === "cours");
   const hash = id === "accueil" ? "" : `#${id}`;
   history.replaceState(history.state, "", `${location.pathname}${currentQuery()}${hash}`);
   if (scroll) window.scrollTo({ top: 0, behavior: "auto" });

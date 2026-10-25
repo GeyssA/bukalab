@@ -190,6 +190,29 @@ a:hover {
   color: var(--teal);
 }
 
+.hero-aside {
+  margin: 0.9rem 0 0;
+  color: var(--stone);
+  font-size: 0.98rem;
+}
+
+.hero-aside button {
+  appearance: none;
+  border: none;
+  background: none;
+  padding: 0;
+  font: inherit;
+  color: var(--teal);
+  font-weight: 600;
+  cursor: pointer;
+  text-decoration: underline;
+  text-underline-offset: 3px;
+}
+
+.hero-aside button:hover {
+  color: var(--lagoon);
+}
+
 .hero-next {
   margin: 0 0 1.75rem;
   padding: 0.15rem 0 0.15rem 0.95rem;
@@ -940,6 +963,174 @@ a:hover {
   *::after {
     animation-duration: 0.01ms !important;
     transition-duration: 0.01ms !important;
+  }
+}
+
+/* Cours — feuille d'exercices, pas la charte des cartes */
+body.theme-cours {
+  background: #f4efe4;
+}
+
+body.theme-cours .site-header {
+  background: #f4efe4;
+  border-bottom-color: #e3d7c4;
+}
+
+body.theme-cours .nav-btn.is-active {
+  color: #8a3e24;
+  background: rgba(184, 92, 56, 0.12);
+}
+
+body.theme-cours .site-footer {
+  background: #f4efe4;
+  border-top-color: #e3d7c4;
+}
+
+.panel-cours {
+  position: relative;
+}
+
+.cours-sheet {
+  position: relative;
+  overflow: hidden;
+  background-image: radial-gradient(rgba(36, 44, 58, 0.16) 1px, transparent 1px);
+  background-size: 22px 22px;
+  background-position: 0 12px;
+}
+
+.cours-curve {
+  position: absolute;
+  top: 0.5rem;
+  right: -2rem;
+  width: min(46rem, 70vw);
+  height: auto;
+  pointer-events: none;
+}
+
+.cours-curve path {
+  fill: none;
+  stroke: #c46a45;
+  stroke-width: 1.6;
+  opacity: 0.55;
+}
+
+.cours-curve path:first-child,
+.cours-curve path:nth-child(2) {
+  stroke: #24303f;
+  stroke-width: 1.1;
+  opacity: 0.35;
+}
+
+.cours-curve circle {
+  fill: #c46a45;
+}
+
+.cours {
+  position: relative;
+  max-width: 46rem;
+  padding-top: 2.5rem;
+}
+
+.cours-kicker {
+  margin: 0 0 0.4rem;
+  font-size: 0.75rem;
+  font-weight: 700;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: #c46a45;
+}
+
+.cours h1 {
+  margin: 0 0 0.8rem;
+  max-width: 16ch;
+  font-size: clamp(1.8rem, 4vw, 2.6rem);
+  line-height: 1.12;
+  letter-spacing: -0.03em;
+}
+
+.cours-lead {
+  margin: 0 0 2rem;
+  max-width: 38rem;
+  font-size: 1.08rem;
+  color: #3c4654;
+}
+
+.cours a {
+  color: #8a3e24;
+}
+
+.cours-board {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 0.85rem;
+}
+
+.cours-board li {
+  display: flex;
+  gap: 0.85rem;
+  align-items: flex-start;
+  margin: 0;
+  padding: 0.95rem 1rem;
+  background: rgba(255, 252, 247, 0.88);
+  border: 1px solid #e4d5c0;
+  border-radius: 12px;
+}
+
+.cours-board h2 {
+  margin: 0 0 0.2rem;
+  font-size: 1.02rem;
+  color: #24303f;
+}
+
+.cours-board p {
+  margin: 0;
+  font-size: 0.92rem;
+  color: #5c6570;
+}
+
+.cours-fig {
+  flex: 0 0 3.4rem;
+  height: 2.4rem;
+  display: grid;
+  place-items: center;
+}
+
+.cours-fig svg {
+  width: 3.2rem;
+  height: 2rem;
+}
+
+.cours-fig rect,
+.cours-fig circle {
+  fill: none;
+  stroke: #24303f;
+  stroke-width: 1.6;
+}
+
+.cours-fig path {
+  fill: none;
+  stroke: #c46a45;
+  stroke-width: 1.8;
+  stroke-linecap: round;
+}
+
+.cours-note {
+  margin: 1.5rem 0 0;
+  max-width: 36rem;
+  font-size: 0.95rem;
+  color: #5c6570;
+}
+
+@media (max-width: 640px) {
+  .cours-board {
+    grid-template-columns: 1fr;
+  }
+
+  .cours-curve {
+    opacity: 0.45;
   }
 }
 

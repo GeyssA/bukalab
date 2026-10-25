@@ -17,6 +17,7 @@
       <nav class="site-nav" aria-label="Principal">
         <button type="button" class="nav-btn is-active" data-nav="accueil">Accueil</button>
         <button type="button" class="nav-btn" data-nav="cartographie">Cartographie</button>
+        <button type="button" class="nav-btn" data-nav="cours">Cours</button>
         <button type="button" class="nav-btn" data-nav="apropos">À propos</button>
       </nav>
       <a class="logo-link" href="#" data-goto="accueil" aria-label="BukaLab accueil">
@@ -40,6 +41,7 @@
           </ul>
         </div>
         <button type="button" class="btn-primary" data-goto="cartographie">Voir la cartographie</button>
+        <p class="hero-aside">Je donne aussi <button type="button" data-goto="cours">des cours de biostatistique</button> à l’université.</p>
 
         <button type="button" class="hero-map-teaser" data-open-first="image">
           <span class="hero-map-frame">
@@ -83,15 +85,86 @@
       </div>
     </section>
 
+    <section class="panel panel-cours" data-panel="cours" id="cours">
+      <div class="cours-sheet">
+        <svg class="cours-curve" viewBox="0 0 640 220" aria-hidden="true">
+          <path d="M20 180 H620" />
+          <path d="M48 190 V28" />
+          <path d="M48 168 C 140 166, 200 40, 320 40 C 440 40, 500 166, 592 168" />
+          <circle cx="320" cy="40" r="4" />
+        </svg>
+        <div class="wrap cours">
+          <p class="cours-kicker">Cours</p>
+          <h1>Des cours de biostatistique.</h1>
+          <p class="cours-lead">
+            Pour des étudiants à l’université. On suit le
+            <a href="https://geyssa.github.io/learnstatistics.com/" rel="noopener noreferrer" target="_blank">support en ligne</a>,
+            sans se presser : décrire des données, un peu de probabilités, les lois usuelles,
+            puis les intervalles et les tests. Un TP ou un mémoire qui coince, ça se reprend aussi.
+          </p>
+
+          <ol class="cours-board">
+            <li>
+              <span class="cours-fig" aria-hidden="true">
+                <svg viewBox="0 0 64 40"><rect x="6" y="22" width="8" height="12"/><rect x="20" y="12" width="8" height="22"/><rect x="34" y="17" width="8" height="17"/><rect x="48" y="6" width="8" height="28"/></svg>
+              </span>
+              <div>
+                <h2>Décrire</h2>
+                <p>Variables, tableaux, moyennes, dispersion.</p>
+              </div>
+            </li>
+            <li>
+              <span class="cours-fig" aria-hidden="true">
+                <svg viewBox="0 0 64 40"><circle cx="24" cy="20" r="12"/><circle cx="40" cy="20" r="12"/></svg>
+              </span>
+              <div>
+                <h2>Hasard</h2>
+                <p>Événements, probabilités conditionnelles, Bayes.</p>
+              </div>
+            </li>
+            <li>
+              <span class="cours-fig" aria-hidden="true">
+                <svg viewBox="0 0 64 40"><path d="M6 32 C 18 32, 22 8, 32 8 C 42 8, 46 32, 58 32"/></svg>
+              </span>
+              <div>
+                <h2>Lois</h2>
+                <p>Binomiale, Poisson, normale.</p>
+              </div>
+            </li>
+            <li>
+              <span class="cours-fig" aria-hidden="true">
+                <svg viewBox="0 0 64 40"><path d="M10 20 H54"/><path d="M10 14 V26"/><path d="M54 14 V26"/><circle cx="32" cy="20" r="3"/></svg>
+              </span>
+              <div>
+                <h2>Conclure</h2>
+                <p>Intervalles de confiance et tests.</p>
+              </div>
+            </li>
+          </ol>
+
+          <p class="cours-note">
+            Le détail des chapitres est sur
+            <a href="https://geyssa.github.io/learnstatistics.com/" rel="noopener noreferrer" target="_blank">LearnStatistics</a>.
+            Pour réserver une séance,
+            <a href="https://www.superprof.be/biostatisticien-biologiste-conservation-chercheur-herpetologie-cours-relecture-travaux.html" rel="noopener noreferrer" target="_blank">la page Superprof</a>.
+          </p>
+        </div>
+      </div>
+    </section>
+
     <section class="panel" data-panel="apropos">
       <div class="wrap about-grid">
         <div>
-          <h2>BukaLab</h2>
-          <p>Conception, traitement et cartographie : <strong>Arnaud Geyssels</strong>.</p>
+          <h2>Arnaud Geyssels</h2>
+          <p>
+            Biostatistique, biologie de la conservation, herpétologie.
+            BukaLab, c’est les cartes de ce site, et les cours pour les étudiants qui veulent reprendre un chapitre au calme.
+          </p>
         </div>
         <div>
           <h2>Contact</h2>
           <p><a href="https://www.linkedin.com/in/arnaud-geyssels-159329243/" rel="noopener noreferrer" target="_blank">LinkedIn</a></p>
+          <p><a href="https://www.superprof.be/biostatisticien-biologiste-conservation-chercheur-herpetologie-cours-relecture-travaux.html" rel="noopener noreferrer" target="_blank">Superprof</a></p>
         </div>
       </div>
     </section>
