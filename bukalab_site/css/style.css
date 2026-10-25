@@ -75,8 +75,16 @@ a:hover {
   display: flex;
   align-items: center;
   justify-content: space-between;
-  gap: 1.5rem;
+  flex-wrap: wrap;
+  gap: 0.75rem 1.5rem;
   min-height: var(--header-h);
+}
+
+.header-tools {
+  display: flex;
+  align-items: center;
+  gap: 0.85rem;
+  margin-left: auto;
 }
 
 .logo-link {
@@ -84,8 +92,39 @@ a:hover {
   align-items: center;
   flex-shrink: 0;
   text-decoration: none;
-  margin-left: auto;
   line-height: 0;
+}
+
+.contact-links {
+  display: flex;
+  align-items: center;
+  gap: 0.35rem;
+}
+
+.contact-links a {
+  width: 2rem;
+  height: 2rem;
+  display: grid;
+  place-items: center;
+  border-radius: 999px;
+  border: 1px solid var(--rule);
+  color: var(--ink);
+  background: var(--white);
+}
+
+.contact-links a:hover {
+  color: var(--teal);
+  border-color: var(--teal);
+}
+
+.contact-links svg {
+  width: 1rem;
+  height: 1rem;
+  fill: none;
+  stroke: currentColor;
+  stroke-width: 1.7;
+  stroke-linecap: round;
+  stroke-linejoin: round;
 }
 
 /* Logo vectoriel officiel (symbole + bukalab, sans baseline sous le header) */
@@ -998,37 +1037,23 @@ body.theme-cours .site-footer {
   background-position: 0 12px;
 }
 
-.cours-curve {
-  position: absolute;
-  top: 0.5rem;
-  right: -2rem;
-  width: min(46rem, 70vw);
-  height: auto;
-  pointer-events: none;
-}
-
-.cours-curve path {
-  fill: none;
-  stroke: #c46a45;
-  stroke-width: 1.6;
-  opacity: 0.55;
-}
-
-.cours-curve path:first-child,
-.cours-curve path:nth-child(2) {
-  stroke: #24303f;
-  stroke-width: 1.1;
-  opacity: 0.35;
-}
-
-.cours-curve circle {
-  fill: #c46a45;
-}
-
 .cours {
   position: relative;
-  max-width: 46rem;
-  padding-top: 2.5rem;
+  max-width: 72rem;
+  padding-top: 1.75rem;
+  padding-left: 1.25rem;
+}
+
+.cours-layout {
+  display: grid;
+  grid-template-columns: minmax(0, 36rem) minmax(16rem, 22rem);
+  gap: 2.5rem 3rem;
+  align-items: start;
+  justify-content: start;
+}
+
+.cours-copy {
+  min-width: 0;
 }
 
 .cours-kicker {
@@ -1119,9 +1144,89 @@ body.theme-cours .site-footer {
 
 .cours-note {
   margin: 1.5rem 0 0;
-  max-width: 36rem;
+  max-width: 34rem;
   font-size: 0.95rem;
   color: #5c6570;
+}
+
+.cours-lab {
+  margin: 0;
+  padding: 1rem 1rem 0.9rem;
+  background: rgba(255, 252, 247, 0.92);
+  border: 1px solid #e4d5c0;
+  border-radius: 14px;
+}
+
+.cours-lab figcaption {
+  margin: 0 0 0.35rem;
+  font-size: 0.82rem;
+  font-weight: 600;
+  color: #24303f;
+}
+
+#gauss-plot {
+  display: block;
+  width: 100%;
+  height: auto;
+}
+
+.gauss-axis {
+  stroke: #24303f;
+  stroke-width: 1.2;
+  opacity: 0.45;
+}
+
+#gauss-ghost {
+  fill: none;
+  stroke: #b7aea2;
+  stroke-width: 1.6;
+  stroke-dasharray: 4 4;
+}
+
+#gauss-curve {
+  fill: rgba(196, 106, 69, 0.12);
+  stroke: #c46a45;
+  stroke-width: 2.4;
+  stroke-linejoin: round;
+  stroke-linecap: round;
+}
+
+#gauss-mean {
+  stroke: #24303f;
+  stroke-width: 1.2;
+  stroke-dasharray: 3 3;
+}
+
+.cours-sliders {
+  display: grid;
+  gap: 0.65rem;
+  margin-top: 0.35rem;
+}
+
+.cours-sliders label {
+  display: grid;
+  gap: 0.25rem;
+  font-size: 0.84rem;
+  color: #3c4654;
+}
+
+.cours-sliders input[type="range"] {
+  width: 100%;
+  accent-color: #c46a45;
+}
+
+.cours-readout {
+  margin: 0.55rem 0 0.15rem;
+  font-variant-numeric: tabular-nums;
+  font-size: 0.92rem;
+  font-weight: 600;
+  color: #8a3e24;
+}
+
+@media (max-width: 860px) {
+  .cours-layout {
+    grid-template-columns: 1fr;
+  }
 }
 
 @media (max-width: 640px) {
@@ -1129,8 +1234,13 @@ body.theme-cours .site-footer {
     grid-template-columns: 1fr;
   }
 
-  .cours-curve {
-    opacity: 0.45;
+  .header-tools {
+    gap: 0.45rem;
+  }
+
+  .contact-links a {
+    width: 1.75rem;
+    height: 1.75rem;
   }
 }
 
@@ -1160,4 +1270,17 @@ body.theme-cours .site-footer {
 
 .site-footer strong {
   color: var(--teal);
+}
+
+.site-footer .contact-links {
+  justify-content: center;
+  margin-bottom: 0.65rem;
+}
+
+.site-footer p {
+  margin: 0.2rem 0;
+}
+
+.about-grid .contact-links {
+  margin-top: 0.75rem;
 }
