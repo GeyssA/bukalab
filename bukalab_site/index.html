@@ -221,7 +221,7 @@
           <h1 data-i18n="about.name">Arnaud Geyssels</h1>
           <p class="about-role" data-i18n="about.role">Biologiste de la conservation · biostatisticien</p>
           <p data-i18n="about.body">
-            Herpétologie, à l’interface du terrain, de l’analyse de données et des outils numériques : génétique des populations, écophysiologie, suivis acoustiques, télémétrie, télédétection. Chargé de projet biodiversité au Conservatoire d’espaces naturels de Corse depuis 2023, et cours de biostatistique en parallèle. Auparavant assistant en statistiques à l’UCLouvain. Séjours de recherche au CNRS de Chizé, sur l’hydrorégulation des vipères, et à la station biologique de Doñana.
+            Je travaille sur les amphibiens et les reptiles : le terrain d’abord, puis les données et les cartes. Ça passe par la génétique, l’écophysiologie, les écoutes, la télémétrie, les images satellite. Depuis 2023 je suis chargé de projet biodiversité au Conservatoire d’espaces naturels de Corse, et je donne des cours de biostatistique en parallèle. Avant ça, j’étais assistant en statistiques à l’UCLouvain. J’ai aussi passé quelques mois au CNRS de Chizé, sur l’hydrorégulation des vipères, et à la station biologique de Doñana.
           </p>
           <h2 data-i18n="about.contact">Contact</h2>
           <p>
@@ -267,13 +267,15 @@
         </div>
       </div>
 
-      <div class="cv-zoom" id="cv-zoom" hidden>
-        <button type="button" class="cv-zoom-backdrop" data-cv-zoom-close aria-label="Fermer"></button>
-        <button type="button" class="cv-zoom-close" data-cv-zoom-close data-i18n-aria="cv.close" aria-label="Fermer">✕</button>
-        <img id="cv-zoom-img" alt="" />
-      </div>
     </section>
   </main>
+
+  <div class="cv-zoom" id="cv-zoom" hidden>
+    <div class="cv-zoom-stage" data-cv-zoom-close>
+      <img id="cv-zoom-img" alt="" />
+    </div>
+    <button type="button" class="cv-zoom-close" data-cv-zoom-close data-i18n-aria="cv.close" aria-label="Fermer">✕</button>
+  </div>
 
   <footer class="site-footer">
     <nav class="contact-links" aria-label="Contact">

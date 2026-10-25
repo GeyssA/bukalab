@@ -32,7 +32,7 @@ function openZoom(src, alt) {
   zoomImg.alt = alt || "";
   zoom.hidden = false;
   document.body.classList.add("is-locked");
-  zoom.querySelector("[data-cv-zoom-close]")?.focus();
+  zoom.querySelector(".cv-zoom-close")?.focus();
 }
 
 function closeZoom() {
@@ -56,6 +56,8 @@ document.querySelectorAll("[data-cv-zoom]").forEach((btn) => {
 zoom?.querySelectorAll("[data-cv-zoom-close]").forEach((el) => {
   el.addEventListener("click", closeZoom);
 });
+
+zoomImg?.addEventListener("click", (event) => event.stopPropagation());
 
 document.addEventListener("keydown", (e) => {
   if (e.key === "Escape") closeZoom();
