@@ -1,4 +1,4 @@
-const PANELS = ["accueil", "cartographie", "cours", "apropos"];
+const PANELS = ["accueil", "cartographie", "videos", "cours", "apropos"];
 const logo = document.getElementById("site-logo");
 const LOGO_SIMPLE = "assets/bukalab_logo_simple.svg";
 const LOGO_COURS = "assets/bukalab_logo_plain.svg";

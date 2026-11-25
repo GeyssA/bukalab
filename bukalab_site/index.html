@@ -17,6 +17,7 @@
       <nav class="site-nav" aria-label="Principal">
         <button type="button" class="nav-btn is-active" data-nav="accueil" data-i18n="nav.home">Accueil</button>
         <button type="button" class="nav-btn" data-nav="cartographie" data-i18n="nav.maps">Cartographie</button>
+        <button type="button" class="nav-btn" data-nav="videos" data-i18n="nav.videos">Vidéos</button>
         <button type="button" class="nav-btn" data-nav="cours" data-i18n="nav.courses">Cours</button>
         <button type="button" class="nav-btn" data-nav="apropos" data-i18n="nav.about">À propos</button>
       </nav>
@@ -79,6 +80,17 @@
           <span class="hero-map-caption" data-i18n="home.caption">France, 2025 — température × précipitations</span>
         </button>
 
+        <section class="home-films" aria-labelledby="home-films-title">
+          <div class="home-films-head">
+            <div>
+              <p class="carto-eyebrow" data-i18n="home.films.kicker">En mouvement</p>
+              <h2 id="home-films-title" data-i18n="home.films.title">Cartographies animées</h2>
+            </div>
+            <button type="button" class="home-films-link" data-goto="videos" data-i18n="home.films.link">Toutes les vidéos</button>
+          </div>
+          <div class="film-slot" data-film-slot="memoire-du-feu-corse"></div>
+        </section>
+
       </div>
     </section>
 
@@ -103,6 +115,20 @@
 
         <div class="carto-grid" id="carto-grid"></div>
         <p class="carto-empty" id="carto-empty" data-i18n="carto.empty" hidden>Aucune carte ne correspond à cette recherche.</p>
+      </div>
+    </section>
+
+    <section class="panel" data-panel="videos" id="videos">
+      <div class="wrap">
+        <header class="carto-intro">
+          <p class="carto-eyebrow" data-i18n="films.kicker">Vidéos</p>
+          <h1 data-i18n="films.title">Cartographies animées</h1>
+          <p class="carto-lead" data-i18n="films.lead">
+            Les vidéos tournent en silence dans la page. Cliquez pour les ouvrir en grand,
+            avec le son, la barre de lecture et les chapitres.
+          </p>
+        </header>
+        <div class="film-list" id="film-list"></div>
       </div>
     </section>
 
@@ -344,10 +370,36 @@
     </div>
   </div>
 
+  <div class="film-viewer" id="film-viewer" hidden role="dialog" aria-modal="true" aria-labelledby="film-viewer-title">
+    <div class="film-viewer-backdrop" data-film-close></div>
+    <div class="film-viewer-shell">
+      <header class="viewer-bar film-viewer-bar">
+        <div class="viewer-meta">
+          <p class="viewer-eyebrow" id="film-viewer-eyebrow"></p>
+          <h2 id="film-viewer-title"></h2>
+          <p class="viewer-sub" id="film-viewer-sub"></p>
+        </div>
+        <div class="viewer-actions">
+          <button type="button" class="tool-btn" id="film-fullscreen" data-i18n="films.fullscreen">Plein écran</button>
+          <a class="tool-btn tool-btn-download" id="film-download" href="#" download data-i18n="viewer.download">Télécharger</a>
+          <button type="button" class="tool-btn tool-btn-close" data-film-close data-i18n-title="viewer.close" data-i18n-aria="viewer.close" title="Fermer" aria-label="Fermer">✕</button>
+        </div>
+      </header>
+      <div class="film-viewer-stage" data-film-close>
+        <video class="film-viewer-video" id="film-viewer-video" controls playsinline preload="metadata"></video>
+      </div>
+      <footer class="viewer-foot film-viewer-foot">
+        <ol class="film-chapters film-chapters--strip" id="film-viewer-chapters"></ol>
+        <p class="viewer-hint" data-i18n="films.hint">Espace pour lecture / pause · ← → pour avancer de 5 s · F pour le plein écran · Échap pour fermer</p>
+      </footer>
+    </div>
+  </div>
+
   <script src="js/i18n.js"></script>
   <script src="js/catalog.js"></script>
   <script src="js/main.js"></script>
   <script src="js/carto.js"></script>
+  <script src="js/videos.js"></script>
   <script src="js/cours.js"></script>
   <script src="js/about.js"></script>
 </body>
